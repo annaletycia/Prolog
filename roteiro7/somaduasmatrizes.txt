@@ -1,0 +1,20 @@
+//Somar duas matrizes
+TMat *mat_soma(TMat* m1, TMat* m2){
+	TMat *S;
+	int lin_m1, lin_m2, col_m1, col_m2, i, j;
+	lin_m1 = m1->nrows;
+	lin_m2 = m2->nrows;
+	col_m1 = m1->ncolumns;
+	col_m2 = m2->ncolumns;
+	if(lin_m1 != lin_m2 || col_m1 != col_m2){		
+		return NULL;
+	}
+	S = mat_create(lin_m1, col_m1);
+	for(i = 0; i < lin_m1; i++){
+		for(j = 0; j < col_m1; j++){
+			int k = j * S->nrows + i;
+			S->data[k] = m1->data[k] + m2->data[k];
+		}
+	}
+	return S;
+}
